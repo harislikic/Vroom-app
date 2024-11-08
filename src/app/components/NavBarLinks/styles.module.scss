@@ -1,0 +1,29 @@
+.navBarSection{
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        padding-right: 48px;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Aktiv Grotesk Extended', sans-serif;
+
+        :hover{
+            color: #003366
+        }
+
+        .aboutSection{
+            padding-right: 80px;
+          
+        }
+
+        .publishSection{
+            padding-right: 80px;
+        }
+
+        .profileSection{
+      
+        }
+    }
+

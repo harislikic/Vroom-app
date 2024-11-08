@@ -6,35 +6,9 @@
 
     .logo{
         padding-left: 48px;
-        color: white;
+        color: #900C3F;
         font-size: 70px;
         font-weight: bolder;
         font-family: 'Aktiv Grotesk Extended', sans-serif;
     }
-
-    .navBarSection{
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: white;
-        padding-right: 48px;
-        font-size: 16px;
-        font-weight: bold;
-        font-family: 'Aktiv Grotesk Extended', sans-serif;
-
-        .aboutSection{
-            padding-right: 80px;
-          
-        }
-
-        .publishSection{
-            padding-right: 80px;
-        }
-
-        .profileSection{
-      
-        }
-    }
-
 }
