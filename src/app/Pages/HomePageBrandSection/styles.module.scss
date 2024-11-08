@@ -1,5 +1,5 @@
 .Wrapper{
-    height: 50vh;
+    height: 40vh;
     width: 100%;
     background-color: black;
     padding-top: 50px;
@@ -8,10 +8,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;  
-    text-align: center;  
+    text-align: center;
+    background-color: white;
     
     .Title{
-        color: #900C3F ;
+        color: #000;
         font-size: 72px;
         font-weight: 500;
         text-transform: uppercase;
@@ -20,7 +21,7 @@
     }
 
     .logoTitle{
-        color: white;
+        color: #900C3F;
         font-size: 118px;
         font-weight: bold;
         margin-top: -54px;

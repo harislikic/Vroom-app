@@ -3,7 +3,7 @@ import NavBarLinks from "../NavBarLinks";
 
 const NavBar = () => {
   return (
-    <div className={styles.nabBarContainer}>
+    <div className={styles.navBarContainer}>
       <div className={styles.logo}>vrm</div>
       <NavBarLinks />
     </div>

@@ -1,8 +1,11 @@
-.nabBarContainer{
+.navBarContainer{
     background-color: black;
     padding: 48px 0 14px;
     display: flex;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 
     .logo{
         padding-left: 48px;
