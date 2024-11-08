@@ -1,0 +1,44 @@
+.Wrapper{
+    height: 50vh;
+    width: 100%;
+    background-color: black;
+    padding-top: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    text-align: center;  
+    
+    .Title{
+        color: #272727;
+        font-size: 72px;
+        font-weight: 500;
+        text-transform: uppercase;
+        word-spacing: 0.5em; 
+        animation: speedEffect 1.5s ease-in-out infinite;
+    }
+
+    .logoTitle{
+        color: white;
+        font-size: 118px;
+        font-weight: bold;
+        margin-top: -54px;
+     
+    }
+}
+
+@keyframes speedEffect {
+    0% {
+      transform: translateX(0);
+      filter: blur(0px); 
+    }
+    50% {
+      transform: translateX(10px); 
+      filter: blur(5px); 
+    }
+    100% {
+      transform: translateX(0);
+      filter: blur(0px);
+    }
+  }
