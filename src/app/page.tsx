@@ -1,5 +1,5 @@
 
-import AdCard from "./components/AdCard";
+import AutomobileAdList from "./components/AutomobileAdList";
 import NavBar from "./components/NavBar";
 import HomePageBrandSection from "./pages/HomePageBrandSection";
 
@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <NavBar />
       <HomePageBrandSection />
-      <AdCard/>
+      <AutomobileAdList />
     </div>
   );
 }
