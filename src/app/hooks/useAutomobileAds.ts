@@ -1,5 +1,3 @@
-"use client";
-
 import { useQuery } from "@tanstack/react-query";
 import { AUTOMOBILE_AD_GETT_ALL } from "../api/apiRoutes";
 

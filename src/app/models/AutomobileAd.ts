@@ -1,3 +1,4 @@
+import { AutmobileAdEquipment } from "./AutomobileAdEquipment";
 import { AutomobileAdImage } from "./AutomobileAdImage";
 import { CarBrand } from "./CarBrand";
 import { CarCategory } from "./CarCategory";
@@ -39,4 +40,10 @@ export interface AutomobileAd {
   transmissionType?: TransmissionType | null;
   favorites: Favorite[];
   images: AutomobileAdImage[];
+  automobileAdEquipments: AutmobileAdEquipment[];
+  enginePower: number;
+  numberOfDoors: number;
+  cubicCapacity: number;
+  horsePower: number;
+  color: string;
 }

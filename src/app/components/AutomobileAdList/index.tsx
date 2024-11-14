@@ -1,33 +1,37 @@
-"use client";
-
-import { useAutomobileAds } from "@/app/hooks/useAutomobileAds";
-import styles from "./styles.module.scss";
 import { AutomobileAd } from "@/app/models/AutomobileAd";
+import styles from "./styles.module.scss";
+import { AUTOMOBILE_AD_GETT_ALL } from "@/app/api/apiRoutes";
 import CarImage from "../CarImage";
-import { CircularProgress } from "@mui/material";
+import Link from "next/link";
 
-const AutomobileAdList = () => {
-  const { data, isLoading } = useAutomobileAds();
+async function fetchAutomobileAds() {
+  const response = await fetch(AUTOMOBILE_AD_GETT_ALL(0, 50), {
+    cache: "no-store",
+  });
 
-  if (isLoading) {
-    return (
-      <div className={styles.loaderContainer}>
-        <CircularProgress size={40} />
-      </div>
-    );
+  if (!response.ok) {
+    throw new Error("Failed to fetch automobile ads");
   }
+  const result = await response.json();
+  return result.data;
+}
+
+const AutomobileAdList = async () => {
+  const data: AutomobileAd[] = await fetchAutomobileAds();
 
   return (
     <div className={styles.container}>
-      {data?.map((car: AutomobileAd) => (
-        <div key={car.id} className={styles.card}>
-          <CarImage imageUrl={car.images[0]?.imageUrl} alt={car.title} />
-          <div className={styles.carDetails}>
-            <h3 className={styles.carTitle}>{car.title}</h3>
-            <p className={styles.carPrice}>{car.price} KM</p>
-            <p className={styles.carLocation}>{car.user.adress}</p>
+      {data.map((car: AutomobileAd) => (
+        <Link href={`/automobileAd/${car.id}`} key={car.id}>
+          <div className={styles.card}>
+            <CarImage imageUrl={car.images[0]?.imageUrl} alt={car.title} />
+            <div className={styles.carDetails}>
+              <h3 className={styles.carTitle}>{car.title}</h3>
+              <p className={styles.carPrice}>{car.price} KM</p>
+              <p className={styles.carLocation}>{car.user.adress}</p>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
