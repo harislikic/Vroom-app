@@ -11,46 +11,53 @@ const fetchAutomobileAdById = async (id: string | string[] | undefined) => {
     cache: "no-store",
   });
 
-
   if (!response.ok) {
     throw new Error("Failed to fetch automobile ad");
   }
-  const result = await response.json();
-
-  console.log("data", result);
-  return result;
+  return await response.json();
 };
 
 const AutomobileAdDetails = () => {
   const router = useRouter();
-
   const { id } = router.query;
-
   const [data, setData] = useState<AutomobileAd | null>(null);
 
   useEffect(() => {
     if (id) {
-      fetchAutomobileAdById(id)
-        .then((result) => {
-          setData(result);
-         
-        })
-        .catch(() => {
-
-        });
+      fetchAutomobileAdById(id).then(setData).catch(console.error);
     }
   }, [id]);
 
   return (
     <div className={styles.automobileAdDetails}>
-      <h1>{data?.title}</h1>
-      <div className={styles.automobileAdInfo}>
-        <div className={styles.automobileAdImages}>
+      <h1 className={styles.title}>{data?.title}</h1>
+      <p className={styles.price}>{data?.price} KM</p>
+
+      <div className={styles.imageContainer}>
         <ImageCarousel images={data?.images || []} />
+      </div>
+
+      <div className={styles.infoContainer}>
+        <div className={styles.details}>
+          <p>
+            <strong>Location:</strong> {data?.user?.adress}
+          </p>
+          <p>
+            <strong>Status:</strong> {data?.status}
+          </p>
+          <p>
+            <strong>Posted on:</strong>{" "}
+            {new Date(data?.dateOFadd || "").toLocaleDateString()}
+          </p>
+          <p>
+            <strong>Listing ID:</strong> {data?.id}
+          </p>
+          <p>
+            <strong>Views:</strong> {data?.viewsCount}
+          </p>
         </div>
-        <div className={styles.automobileAdSummary}>
-          <p className={styles.price}>{data?.price} KM</p>
-          <p className={styles.description}>{data?.description}</p>
+
+        <div className={styles.specs}>
           <p>
             <strong>Brand:</strong> {data?.carBrand?.name}
           </p>
@@ -70,17 +77,36 @@ const AutomobileAdDetails = () => {
             <strong>Color:</strong> {data?.color}
           </p>
           <p>
-            <strong>Location:</strong> {data?.user?.adress}
+            <strong>Registered:</strong> {data?.registered}
           </p>
-          <div className={styles.automobileAdEquipment}>
-            <strong>Equipment:</strong>
-            <ul>
-              {data?.automobileAdEquipments?.map((item) => (
-                <li key={item.equipment.id}>{item.equipment.name}</li>
-              ))}
-            </ul>
-          </div>
+          <p>
+            <strong>Registration expiration date:</strong>{" "}
+            {new Date(
+              data?.registrationExpirationDate || ""
+            ).toLocaleDateString()}
+          </p>
+          <p>
+            <strong>Date of last small service:</strong>{" "}
+            {new Date(data?.last_Small_Service || "").toLocaleDateString()}
+          </p>
+          <p>
+            <strong>Date of last big service expiration date:</strong>{" "}
+            {new Date(data?.last_Big_Service || "").toLocaleDateString()}
+          </p>
         </div>
+
+        <div className={styles.equipment}>
+          <strong>Additional Equipment:</strong>
+          <ul>
+            {data?.automobileAdEquipments?.map((item) => (
+              <li key={item.equipment.id}>{item.equipment.name}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className={styles.description}>
+        <p>{data?.description}</p>
       </div>
     </div>
   );

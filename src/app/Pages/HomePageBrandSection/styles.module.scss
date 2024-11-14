@@ -1,18 +1,29 @@
 .Wrapper{
     height: 40vh;
     width: 100%;
-    background-color: black;
-    padding-top: 50px;
+
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;  
     text-align: center;
-    background-color: white;
+
+    
+    .bgImage{
+      background-image: url("https://img.freepik.com/free-photo/modern-car-futuristic-road_23-2151021095.jpg?t=st=1731591599~exp=1731595199~hmac=fb3ca48f5d16ac7194e908f35fb656f9b631888c4869637fcaf0deabe091e040&w=1380");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center; 
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
     
     .Title{
-        color: #000;
+        color: white;
         font-size: 72px;
         font-weight: 500;
         text-transform: uppercase;
@@ -25,6 +36,7 @@
         font-size: 118px;
         font-weight: bold;
         margin-top: -54px;
+        z-index: 2;
      
     }
 }
